@@ -1,0 +1,41 @@
+<!-- Button trigger modal to edit -->
+<div class="modal fade" id="ModalUpdate12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" id="bind_msg" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Type-in message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-1">
+                        <label for="validationServer01" class="col-sm-3">Message</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-check-label form-control" name='txtMessage' id="txtMessage1">
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-1">
+                        <label for="validationServer01" class="col-sm-3">Attach File</label>
+                        <div class="col-sm-7">
+                            <input type="file" class="form-check-label form-control" name='fileAttach' id="fileAttach1">
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="row mb-1">
+                        <label for="validationServer01" class="col-sm-3">Image</label>
+                        <div class="col-sm-7">
+                            <input type="file" class="form-check-label form-control" name='image' required>
+                            <img src="" id="image14" alt="" width="100 px" height="75px">
+                        </div>
+                    </div> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

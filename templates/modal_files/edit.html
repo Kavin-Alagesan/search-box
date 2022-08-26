@@ -1,0 +1,101 @@
+<!-- Button trigger modal to edit -->
+<div class="modal fade" id="ModalUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" id="bind7" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Blog</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-1">
+                        <label for="validationServer01" class="col-sm-3">Title</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-check-label form-control" name='title' id="title1">
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <label for="validationServer01" class="col-sm-3">Post</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-check-label form-control" name='post' id="post1">
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <label for="validationServer01" class="col-sm-3">Author</label>
+                        <div class="col-sm-7">
+                            <select class="form-select" name="author" id='author1' required aria-label="select example">
+                                <option value="Unknown">Unknown</option>
+                                <option value="Arun">Arun</option>
+                                <option value="Mari">Mari</option>
+                                <option value="Pranish">Pranish</option>
+                                <option value="Naren">Naren</option>
+                                <option value="Kavin">Kavin</option>
+                            </select>
+                            <div class="invalid-feedback">Select your language</div>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <label for="validationServer01" class="col-sm-3">Type</label>
+                        <div class="col-sm-7">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name='post_regarding' value="Python"
+                                    id="pythonoption">
+                                <label class="form-check-label" for="validationFormCheck2">Python</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name='post_regarding' value="CSS"
+                                    id="cssoption">
+                                <label class="form-check-label" for="validationFormCheck2">CSS</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name='post_regarding' value="HTML"
+                                    id="htmloption">
+                                <label class="form-check-label" for="validationFormCheck2">HTML</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name='post_regarding' value="AJAX"
+                                    id="ajaxoption">
+                                <label class="form-check-label" for="validationFormCheck2">AJAX</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name='post_regarding' value="Others"
+                                    id="othersoption">
+                                <label class="form-check-label" for="validationFormCheck2">Others</label>
+                                <div class="invalid-feedback">Select anyone of the above</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <label for="validationServer01" class="col-sm-3">Contact</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-check-label form-control" name='contact' id="contact1">
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <label for="validationServer01" class="col-sm-3">Brief Description</label>
+                        <div class="col-sm-7">
+                            <textarea class="form-check-label form-control" name='brief_about_post'
+                                id="brief_about_post1"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <label for="validationServer01" class="col-sm-3">Image</label>
+                        <div class="col-sm-7">
+                            <input type="file" class="form-check-label form-control" name='image' required>
+                            <img src="" id="image14" alt="" width="100 px" height="75px">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+

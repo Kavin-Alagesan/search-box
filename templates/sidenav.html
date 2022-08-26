@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="wrapper d-flex align-items-stretch">
+  <nav id="sidebar">
+    <div class="p-4 pt-5">
+      <a href="" class="img logo rounded-circle mb-5" style="background-image: url(media/profile_pic/default.jpg);"></a>
+      <ul class="list-unstyled components mb-5">
+        <li class="active">
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+            <li>
+              <a href="#">Home 1</a>
+            </li>
+            <li>
+              <a href="#">Home 2</a>
+            </li>
+            <li>
+              <a href="#">Home 3</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+          <ul class="collapse list-unstyled" id="pageSubmenu">
+            <li>
+              <a href="#">Page 1</a>
+            </li>
+            <li>
+              <a href="#">Page 2</a>
+            </li>
+            <li>
+              <a href="#">Page 3</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Portfolio</a>
+        </li>
+        <li>
+          <a href="#">Contact</a>
+        </li>
+      </ul>
+
+      <div class="footer">
+        <p>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;
+          <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i
+            class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+            target="_blank">Colorlib.com</a>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+          <i class="fa fa-bars"></i>
+          <span class="sr-only">Toggle Menu</span>
+        </button>
+        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <i class="fa fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'create' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'details' %}">Search bar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Create blog -->
+    <center>
+      <h3>Intern Demo</h3>
+      <h7>Getting values from html to API</h7>
+      <p></p>
+      <!-- Message block -->
+      <div class="alert alert-info" role="alert">
+      {% if messages %}
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      {% endif %}
+    </div>
+
+     
+    </center><br>
+    <!-- End message block -->
+    <div class="container">
+      <form name="myForm" class="needs-validation" method="POST" action="{% url 'create' %}" enctype="multipart/form-data"
+        onsubmit="return validateForm()">
+        {% csrf_token %}
+        <!-- <center> -->
+          <div class="row mb-3">
+            <label for="validationServer01" class="col-sm-5 ">Title</label>
+            <div class="col-sm-4" class="has-validation">
+              <input type="text" class="form-check-label form-control" name='title' id="validationServer01" required >
+              <div class="invalid-feedback">
+                Please fill in!
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">  
+            <label for="validationServer01" class="col-sm-5 ">Post</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-check-label form-control" name='post' id="validationServer01" required>
+              <div class="invalid-feedback">
+                Please fill in!
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="validationServer01" class="col-sm-5 ">Author</label>
+            <div class="col-sm-4">
+              <select class="form-select" name="author" required aria-label="select example">
+                <option value="">Open this select menu</option>
+                <option value="Unknown">Unknown</option>
+                <option value="Arun">Arun</option>
+                <option value="Mari">Mari</option>
+                <option value="Pranish">Pranish</option>
+                <option value="Naren">Naren</option>
+                <option value="Kavin">Kavin</option>
+              </select>
+              <div class="invalid-feedback">Select your language</div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="validationServer01" class="col-sm-5 ">Post Language Regarding</label>
+            <div class="col-sm-4">
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name='post_regarding' value="Python"
+                  id="validationServer01" required>
+                <label class="form-check-label" for="validationFormCheck2">Python</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name='post_regarding' value="CSS" id="validationServer01"
+                  required>
+                <label class="form-check-label" for="validationFormCheck2">CSS</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name='post_regarding' value="HTML" id="validationServer01"
+                  required>
+                <label class="form-check-label" for="validationFormCheck2">HTML</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name='post_regarding' value="AJAX" id="validationServer01"
+                  required>
+                <label class="form-check-label" for="validationFormCheck2">AJAX</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" name='post_regarding' value="Others"
+                  id="validationServer01" required>
+                <label class="form-check-label" for="validationFormCheck2">Others</label>
+                <div class="invalid-feedback">Select anyone of the above</div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="validationServer01" class="col-sm-5 ">Contact</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-check-label form-control" name='contact' id="validationServer01" required>
+              <div class="invalid-feedback">
+                Please enter your contact number!
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="validationServer01" class="col-sm-5 ">Brier About Post</label>
+            <div class="col-sm-4">
+              <textarea class="form-check-label form-control" name='brief_about_post'
+                id="validationServer01"></textarea>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="validationServer01" class="col-sm-5 ">Image</label>
+            <div class="col-sm-4">
+              <input type="file" class="form-check-label form-control" name='image' id="validationServer01" required>
+              <div class="invalid-feedback">
+                Upload image!
+              </div>
+            </div>
+          </div>
+          <center>
+          <div class="row mb-3">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
+              <label class="form-check-label" for="validationFormCheck1">Check this checkbox</label>
+              <div class="invalid-feedback">I have entered all required fields.</div>
+            </div>
+          </div>
+        </center>
+        <div class="mb-3">
+          <div style="text-align:center">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- End create blog -->
+
+
+    <!--Edit blog  -->
+    <div class="container">
+      <table border="5px solid #000;">
+        <tbody>
+          <thead>
+            <tr>
+              <th style="text-align:center">Title</th>
+              <th style="text-align:center">Post</th>
+              <th style="text-align:center">Author</th>
+              <th style="text-align:center">Post Regarding</th>
+              <th style="text-align:center">Contact</th>
+              <th style="text-align:center">Brief Note</th>
+              <th style="text-align:center">Image</th>
+            </tr>
+          </thead>
+        </tbody>
+        <tbody>
+          {% for i in data %}
+          <tr>
+            <td style="padding:10px;">{{i.title}}</td>
+            <td style="padding:10px;">{{i.post}}</td>
+            <td style="padding:10px;">{{i.author}}</td>
+            <td style="padding:10px;">{{i.post_regarding}}</td>
+            <td style="padding:10px;">{{i.contact}}</td>
+            <td style="padding:10px;">{{i.brief_about_post}}</td>
+            <td style="padding:10px;"><img src="{{i.image}}" width="70"></td>
+            <td>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalUpdate"
+                onclick="edit('{{i.id}}')">Edit</button>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                data-bs-target="#ModalDelete{{i.id}}">Delete</button>
+            </td>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% include 'modal_files/edit.html' %}
+
+    {% include 'modal_files/delete.html' %}
+
+
+
+
+  </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,7 @@
+    {% include 'header.html' %}   
+
+        {% include 'sidenav.html' %}
+
+
+        
+    <script src="{% static 'js/script.js' %}"></script>
